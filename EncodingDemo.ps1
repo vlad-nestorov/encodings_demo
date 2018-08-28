@@ -28,7 +28,8 @@ foreach ($file in $TextFiles)
             file = $FileName
             encoding = $EncodingName
             value = $Encoding.GetString($bytes)
-            sameAs = @()
+            "== Operator" = @()
+            "String.Equals" = @()
         }
     }
 
@@ -40,12 +41,16 @@ $ResultCollection = $ResultCollection | %  { Add-Member -MemberType ScriptMethod
 for ($i=0; $i -lt $ResultCollection.Count; $i++) {
     for ($j=$i+1; $j -lt $ResultCollection.Count; $j++) {
         if ($ResultCollection[$i].value.Equals( $ResultCollection[$j].value) ){
-            $ResultCollection[$i].sameAs += $ResultCollection[$j]
-            $ResultCollection[$j].sameAs += $ResultCollection[$i]
+            $ResultCollection[$i]."String.Equals" += $ResultCollection[$j]
+            $ResultCollection[$j]."String.Equals" += $ResultCollection[$i]
+        }
+        if ($ResultCollection[$i].value -eq $ResultCollection[$j].value ){
+            $ResultCollection[$i]."== Operator" += $ResultCollection[$j]
+            $ResultCollection[$j]."== Operator" += $ResultCollection[$i]
         }
     }
 }
 
-$ResultCollection | Sort -Property @('file', 'encoding') | Format-Table -Property @('file', 'encoding', 'value', 'sameAs') -AutoSize
+$ResultCollection | Sort -Property @('file', 'encoding') | Format-Table -Property @('file', 'encoding', 'value', '== Operator', 'String.Equals') -AutoSize -
 
-Pause
+pause
