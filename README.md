@@ -42,14 +42,14 @@ UTF8-BOM.txt | utf-8
 file         | encoding     | value          | == Operator                                    | String.Equals
 ----         | --------     | -----          | -----------                                    | -------------
 ASCII.txt    | Bytes        | C1 ||
-ASCII.txt    | us-ascii     | ?              | {}                                             | {}
-ASCII.txt    | utf-8        | �              | {}                                             | {}
-ASCII.txt    | Windows-1252 | Á              | {UTF8-BOM.txt(utf-8), | UTF8.txt(utf-8)}         | {UTF8.txt(utf-8)}
+ASCII.txt    | us-ascii     | ?              |                                              | 
+ASCII.txt    | utf-8        | �              |                                              | 
+ASCII.txt    | Windows-1252 | Á              | UTF8-BOM.txt(utf-8), UTF8.txt(utf-8)         | UTF8.txt(utf-8)
 UTF8.txt     | Bytes        | C3-81 ||
-UTF8.txt     | us-ascii     | ??             | {}                                             | {}
-UTF8.txt     | utf-8        | Á              | {ASCII.txt(Windows-1252), | UTF8-BOM.txt(utf-8)} | {ASCII.txt(Windows-1252)}
-UTF8.txt     | Windows-1252 | Ã             | {}                                             | {}
+UTF8.txt     | us-ascii     | ??             |                                              | 
+UTF8.txt     | utf-8        | Á              | ASCII.txt(Windows-1252), UTF8-BOM.txt(utf-8) | ASCII.txt(Windows-1252)
+UTF8.txt     | Windows-1252 | Ã             |                                              | 
 UTF8-BOM.txt | Bytes        | EF-BB-BF-C3-81 ||
-UTF8-BOM.txt | us-ascii     | ?????          | {}                                             | {}
-UTF8-BOM.txt | utf-8        | ﻿Á             | {ASCII.txt(Windows-1252), | UTF8.txt(utf-8)}     | {}
-UTF8-BOM.txt | Windows-1252 | ï»¿Ã          | {}                                             | {}
+UTF8-BOM.txt | us-ascii     | ?????          |                                              | 
+UTF8-BOM.txt | utf-8        | ﻿Á             | ASCII.txt(Windows-1252), UTF8.txt(utf-8)}     | 
+UTF8-BOM.txt | Windows-1252 | ï»¿Ã          |                                              | 
